@@ -54,7 +54,7 @@ If the @-D CMAKE_BUILD_TYPE=Debug@ option is left out, it will make a release bu
 
 <%= h 2, "Hello Chipmunk (World)", "HelloChipmunk" %>
 
-Hello world Chipmunk style. Create a simple simulation where a ball falls onto a static line segment, then rolls off. Print out the coordinates of the ball.
+"Hello World", Chipmunk style. Create a simple simulation where a ball falls onto a static line segment, then rolls off. Print out the coordinates of the ball.
 
 <%= pop_open_example "Hello Chipmunk" %>
 
@@ -112,10 +112,10 @@ This means that you do not have to buy a license or pay to use Chipmunk in comme
 
 There are 4 basic object types you will use in Chipmunk.
 
-* *Rigid Bodies:* A rigid body holds the physical properties of an object. (mass, position, rotation, velocity, etc.) It does not have a shape until you attach one or more collision shapes to it. If you’ve done physics with particles before, rigid bodies differ in that they are able to rotate. Rigid bodies generally tend to have a 1:1 correlation to sprites in a game. You should structure your game so that you use the position and rotation of the rigid body for drawing your sprite.
-* *Collision Shapes:* By attaching shapes to bodies, you can define the a body’s shape. You can attach as many shapes to a single body as you need to in order to define a complex shape. Shapes contain the surface properties of an object such as how much friction or elasticity it has.
+* *Rigid Bodies:* A rigid body holds the physical properties of an object (mass, position, rotation, velocity, etc.). It does not have a shape until you attach one or more collision shapes to it. If you’ve done physics with particles before, rigid bodies differ in that they are able to rotate. Rigid bodies generally tend to have a 1:1 correlation to sprites in a game. You should structure your game so that you use the position and rotation of the rigid body for drawing your sprite.
+* *Collision Shapes:* By attaching shapes to bodies, you can define the a body’s shape. You can attach as many shapes to a single body as you need to in order to define a complex shape. Shapes contain the surface properties of an object, such as how much friction or elasticity it has.
 * *Constraints/Joints:* Constraints and joints describe how bodies are attached to each other.
-* *Spaces:* Spaces are containers for simulating objects in Chipmunk. You add bodies, shapes and joints to a space and then update the space as a whole. They control how all the rigid bodies, shapes, and constraints interact together.
+* *Spaces:* Spaces are containers for simulating objects in Chipmunk. You add bodies, shapes, and joints to a space and then update the space as a whole. They control how all the rigid bodies, shapes, and constraints interact together.
 
 There is often confusion between rigid bodies and their collision shapes in Chipmunk and how they relate to sprites. A sprite would be a visual representation of an object, while a collision shape is an invisible property that defines how objects should collide. Both the sprite's and the collision shape's position and rotation are controlled by the motion of a rigid body. Generally you want to create a game object type that ties these things all together.
 
@@ -258,7 +258,7 @@ Normally when you create a rigid body, you add it to a space so the space will s
 
 Static bodies are rogue bodies, but with a special flag set on them to let Chipmunk know that they never move unless you tell it. Static bodies have two purposes. Originally they were added for the sleeping feature. Because static bodies don't move, Chipmunk knows that it's safe to let objects that are touching or jointed to them fall asleep. Objects touching or jointed to regular rogue bodies are never allowed to sleep. The second purpose for static bodies is that Chipmunk knows shapes attached to them never need to have their collision detection data updated. Chipmunk also doesn't need to bother checking for collisions between static objects. Generally all of your level geometry will be attached to a static body except for things like moving platforms or doors.
 
-In previous versions of Chipmunk before 5.3 you would create an infinite mass rogue body to attach static shapes to using @cpSpaceAddStaticShape()@. You don't need to do any of that anymore, and shouldn't if you want to use the sleeping feature. Each space has a dedicated static body that you can use to attach your static shapes to. Chipmunk also automatically adds shapes attached to static bodies as static shapes.
+In previous versions of Chipmunk before 5.3, you would create an infinite mass rogue body to attach static shapes to using @cpSpaceAddStaticShape()@. You don't need to do any of that anymore, and shouldn't if you want to use the sleeping feature. Each space has a dedicated static body that you can use to attach your static shapes to. Chipmunk also automatically adds shapes attached to static bodies as static shapes.
 
 
 <%= h 2, "Memory Management Functions:", "Memory" %>
